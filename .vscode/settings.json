@@ -1,0 +1,8 @@
+{
+    "files.associations": {
+        "fb.h": "c",
+        "stdbool.h": "c",
+        "backfb.h": "c",
+        "tga.h": "c"
+    }
+}
