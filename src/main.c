@@ -30,8 +30,10 @@ int main(void) {
 
     // CODE GOES HERE...
 
-    tga_draw(framebuffer, 0, 0, "/koraidon.tga");
- 
+
+
+    // GRAPHICAL CODE ENDS HERE...
+
     backfb_flush(framebuffer);
 
     backfb_deinit(framebuffer);
