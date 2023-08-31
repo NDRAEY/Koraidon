@@ -9,6 +9,7 @@ SRC = src/main.c \
 	  src/video/pixel.c \
 	  src/video/backfb.c \
 	  src/video/tga_image.c \
+	  src/sensors/battery.c \
 
 OBJS = $(SRC:.c=.o)
 PROJECT = koraidon_firmware
@@ -33,6 +34,12 @@ $(OBJS): %.o : %.c
 clean:
 	-$(RM) $(PROJECT)
 	-$(RM) $(OBJS)
+
+build_ports:
+	cd ports/gameboy && \
+	CC=$(CC) $(MAKE)
+
+	cd ..
 
 setup_device:
 	@echo "Now, turn your phone into recovery mode."
