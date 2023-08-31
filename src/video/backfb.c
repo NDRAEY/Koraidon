@@ -28,8 +28,6 @@ void backfb_flush(koraidon_backfb_t framebuffer) {
     memcpy(framebuffer.screen.buffer, framebuffer.buffer, framebuffer.size);
 
     screen_update(framebuffer.screen);
-
-    printf("Backfb flush ok\n");
 }
 
 void backfb_deinit(koraidon_backfb_t framebuffer) {

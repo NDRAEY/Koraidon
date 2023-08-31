@@ -3,6 +3,10 @@
         "fb.h": "c",
         "stdbool.h": "c",
         "backfb.h": "c",
-        "tga.h": "c"
+        "tga.h": "c",
+        "soundcard.h": "c",
+        "sound.h": "c",
+        "input-event-codes.h": "c",
+        "perf_event.h": "c"
     }
 }
