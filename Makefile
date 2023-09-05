@@ -1,5 +1,7 @@
 # Use `chcp 1251` to decode errors
 
+# Use "--sysroot=$(SYSROOT_DIR)" for older NDKs
+
 NDK ?= android-ndk-r25c
 NDK_PATH ?= $(HOME)/$(NDK)/toolchains/llvm/prebuilt/linux-x86_64/bin
 
