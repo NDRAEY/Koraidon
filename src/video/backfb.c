@@ -25,7 +25,7 @@ void screen_update(koraidon_screen_t screen) {
 }
 
 void backfb_flush(koraidon_backfb_t framebuffer) {
-    memcpy(framebuffer.screen.buffer, framebuffer.buffer, framebuffer.size);
+	memcpy(framebuffer.screen.buffer, framebuffer.buffer, framebuffer.size);
 
     screen_update(framebuffer.screen);
 }

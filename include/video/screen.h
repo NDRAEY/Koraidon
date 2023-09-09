@@ -21,7 +21,12 @@ static const koraidon_screen_t invalid_screen = {0};
 
 #define BGR2RGB(color) ({ \
 __typeof__ (color) _color = color;\
-((_color & 0x000000FF) << 16) | (color & 0x0000FF00) | ((color & 0x00FF0000) >> 16);\
+((_color & 0x000000FF) << 16) | (_color & 0x0000FF00) | ((_color & 0x00FF0000) >> 16);\
+})
+
+#define ABGR2ARGB(color) ({ \
+__typeof__ (color) _color = color;\
+(_color & 0xFF000000) | ((_color & 0x000000FF) << 16) | (_color & 0x0000FF00) | ((_color & 0x00FF0000) >> 16);\
 })
 
 koraidon_screen_t _init_screen(const char* path);

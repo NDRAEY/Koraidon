@@ -9,6 +9,7 @@ SRC = src/main.c \
 	  src/video/pixel.c \
 	  src/video/backfb.c \
 	  src/video/tga_image.c \
+	  src/video/scaler.c \
 	  src/sensors/battery.c \
 	  src/tty/tty.c
 
@@ -16,7 +17,8 @@ OBJS = $(SRC:.c=.o)
 PROJECT = koraidon_firmware
 
 RM ?= rm
-CC = $(NDK_PATH)/armv7a-linux-androideabi26-clang
+CC = $(NDK_PATH)/armv7a-linux-androideabi24-clang
+STRIP = $(NDK_PATH)/llvm-strip
 CFLAGS ?= -Iinclude -static -flto -O0 -Wall
 
 PY ?= python3
@@ -27,6 +29,7 @@ all: $(PROJECT)
 
 $(PROJECT): $(OBJS)
 	$(CC) $(OBJS) -static -o $(PROJECT)
+	$(STRIP) -S $(PROJECT)
 	$(PY) tools/fix_tls_alignment.py $(PROJECT)
 
 $(OBJS): %.o : %.c

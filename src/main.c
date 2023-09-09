@@ -8,22 +8,9 @@
 #include "video/screen.h"
 #include "video/backfb.h"
 #include "video/tga_image.h"
+#include "video/pixel.h"
 #include "image_formats/tga.h"
 #include "sensors/battery.h"
-
-void fill_screen(koraidon_backfb_t buf, uint32_t color) {
-    if(buf.screen.real_info.bits_per_pixel == 32) {
-        for(int i = 0; i < buf.screen.real_info.height; i++) {
-            for(int j = 0; j < buf.screen.real_info.width; j++) {
-                uint32_t coord = (i * buf.screen.real_info.width) + j;
-
-                *((uint32_t*)buf.buffer + coord) = color;
-            }
-        }
-    } else {
-        printf("Unsupported bpp: %d\n", buf.screen.real_info.bits_per_pixel);
-    }
-}
 
 #include <linux/input.h>
 #include <linux/soundcard.h>
@@ -69,7 +56,7 @@ int main(void) {
 
     // CODE GOES HERE...
 
-    // BATTERY
+	// AUDIO
 
     int fd = open("/dev/snd/pcmC1D1p", O_RDWR | O_NONBLOCK);
 
@@ -94,7 +81,9 @@ int main(void) {
         close(fd);
     }
 
-    // koraidon_battery_info_t battery;
+    // BATTERY
+
+	// koraidon_battery_info_t battery;
 
     // battery = battery_get_info("/sys/class/power_supply/battery/");
 
@@ -119,9 +108,16 @@ int main(void) {
 
     // close(fd);
 
-    // EVENTS END
+	// IMAGES
 
-    // GRAPHICAL CODE ENDS HERE...
+	tga_scale_draw(
+			framebuffer,
+			0, 0,
+			screen.real_info.width, screen.real_info.height,
+			"/sdcard/test.tga"
+	);
+
+	// GRAPHICAL CODE ENDS HERE...
 
     backfb_flush(framebuffer);
 

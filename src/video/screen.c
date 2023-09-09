@@ -37,6 +37,8 @@ koraidon_screen_t _init_screen(const char* path) {
 
     size_t screen_size = screen_info->width * screen_info->height * (screen_info->bits_per_pixel >> 3);
 
+	printf("Screen size: %d\n", screen_size);
+
     uint8_t* screendata = mmap(0, screen_size, PROT_READ | PROT_WRITE, MAP_SHARED, fd, 0);
 
     if(!screendata) {

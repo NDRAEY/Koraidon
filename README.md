@@ -12,8 +12,8 @@ You need to perform some modifications on your TWRP image:
 3. Pack image back
 4. Flash your modified recovery into your device.
 
-If you doing everything correct, instead of recovery you should see "frozen" boot logo: It's normal.
-And if you connect your device to computer, you will able to enter device's shell using `adb shell` command.
+If you're doing everything correct, instead of recovery you should see "frozen" boot logo: It's normal.
+And if you connect your device to computer, you will be able to enter device's shell using `adb shell` command.
 
 Also, you need an Android NDK (not SDK).
 Download latest version from official website and unpack it.

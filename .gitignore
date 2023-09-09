@@ -1,6 +1,6 @@
 *.o
 *.tga
-koraidon_firmware
-ports/gameboy
+/koraidon_firmware
+/ports/*
 *.wav
 *.mp3

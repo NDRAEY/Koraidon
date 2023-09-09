@@ -67,6 +67,8 @@ int tga_extract_pixels(const char* path, uint32_t* pixel_buf) {
 		return -3;
 	}
 
+	printf("TGA Type: %d\n", targa_header->image_type);
+
 	switch(targa_header->image_type) {
 		case TGA_MODE_UC_CMI: {
             if(file_data[6] != 0
