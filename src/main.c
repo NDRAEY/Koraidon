@@ -110,12 +110,12 @@ int main(void) {
 
 	// IMAGES
 
-	tga_scale_draw(
-			framebuffer,
-			0, 0,
-			screen.real_info.width, screen.real_info.height,
-			"/sdcard/test.tga"
-	);
+//	tga_scale_draw(
+//			framebuffer,
+//			0, 0,
+//			screen.real_info.width, screen.real_info.height,
+//			"/sdcard/test.tga"
+//	);
 
 	// GRAPHICAL CODE ENDS HERE...
 
