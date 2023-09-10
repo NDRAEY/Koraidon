@@ -12,6 +12,7 @@
 #include "image_formats/tga.h"
 #include "sensors/battery.h"
 #include "ui/rect.h"
+#include "ui/psf_font.h"
 
 #include <linux/input.h>
 #include <linux/soundcard.h>
@@ -52,7 +53,7 @@ struct snd_pcm_info {
 int main(void) {
     srand(time(NULL));
 
-    koraidon_screen_t screen = _init_screen("/dev/graphics/fb0");
+    koraidon_screen_t screen = init_screen("/dev/graphics/fb0");
     koraidon_backfb_t framebuffer = backfb_from_screen(screen);
 
     // CODE GOES HERE...
@@ -118,7 +119,9 @@ int main(void) {
 		"/sdcard/test.tga"
 	);
 
-	draw_fill_rect(set_pixel_alpha, framebuffer, 0, 0, screen.real_info.width, 100, 0x80FFFFFF);
+	draw_fill_rect(set_pixel_alpha, framebuffer, 0, 0, screen.real_info.width, 35, 0xACFFFFFF);
+
+	draw_string(set_pixel_alpha, framebuffer, "Hello world!", 10, 10, 0xFF000000);
 
 	// GRAPHICAL CODE ENDS HERE...
 
@@ -127,7 +130,7 @@ int main(void) {
 	while(1);
 
     backfb_deinit(framebuffer);
-    _deinit_screen(screen);
+    deinit_screen(screen);
 
     return 0;
 }

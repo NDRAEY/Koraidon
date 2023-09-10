@@ -29,5 +29,5 @@ __typeof__ (color) _color = color;\
 (_color & 0xFF000000) | ((_color & 0x000000FF) << 16) | (_color & 0x0000FF00) | ((_color & 0x00FF0000) >> 16);\
 })
 
-koraidon_screen_t _init_screen(const char* path);
-void _deinit_screen(koraidon_screen_t screen);
+koraidon_screen_t init_screen(const char* path);
+void deinit_screen(koraidon_screen_t screen);

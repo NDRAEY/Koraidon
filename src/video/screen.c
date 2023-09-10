@@ -1,5 +1,4 @@
 #include <fcntl.h>
-#include <stdint.h>
 #include <stdio.h>
 #include <unistd.h>
 #include <sys/mman.h>
@@ -20,7 +19,7 @@ void screen_debug_info(struct fb_var_screeninfo inf) {
     printf("Transp: %d\n", inf.transp.offset);
 }
 
-koraidon_screen_t _init_screen(const char* path) {
+koraidon_screen_t init_screen(const char* path) {
     koraidon_screen_t screen = {0};
     
     struct fb_var_screeninfo* screen_info = &(screen.real_info);
@@ -70,7 +69,7 @@ koraidon_screen_t _init_screen(const char* path) {
     return screen;
 }
 
-void _deinit_screen(koraidon_screen_t screen) {
+void deinit_screen(koraidon_screen_t screen) {
     munmap(screen.buffer, screen.screen_size);
     close(screen.fd);
 }

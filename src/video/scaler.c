@@ -4,7 +4,6 @@
 
 #include "../../include/video/scaler.h"
 #include <stdlib.h>
-#include <string.h>
 
 #define SIZE(width, height, bpp) ((width) * (height) * ((bpp) >> 3))
 
