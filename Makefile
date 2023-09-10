@@ -13,7 +13,7 @@ SRC = src/main.c \
 	  src/video/tga_image.c \
 	  src/video/scaler.c \
 	  src/sensors/battery.c \
-	  src/tty/tty.c
+	  src/ui/rect.c
 
 OBJS = $(SRC:.c=.o)
 PROJECT = koraidon_firmware

@@ -11,6 +11,7 @@
 #include "video/pixel.h"
 #include "image_formats/tga.h"
 #include "sensors/battery.h"
+#include "ui/rect.h"
 
 #include <linux/input.h>
 #include <linux/soundcard.h>
@@ -83,12 +84,12 @@ int main(void) {
 
     // BATTERY
 
-	// koraidon_battery_info_t battery;
+	 koraidon_battery_info_t battery;
 
-    // battery = battery_get_info("/sys/class/power_supply/battery/");
+     battery = battery_get_info("/sys/class/power_supply/battery/");
 
-    // printf("Level: %d%\nTemperature: %f *C\nVolatge: %f V\n", battery.level, battery.temp, battery.voltage);
-    // printf("Is charging: %s\n", battery.status == BATTERY_CHARGING ? "yes" : "no");
+     printf("Level: %d\nTemperature: %f *C\nVolatge: %f V\n", battery.level, battery.temp, battery.voltage);
+     printf("Is charging: %s\n", battery.status == BATTERY_CHARGING ? "yes" : "no");
 
     // BATTERY END
 
@@ -110,16 +111,20 @@ int main(void) {
 
 	// IMAGES
 
-//	tga_scale_draw(
-//			framebuffer,
-//			0, 0,
-//			screen.real_info.width, screen.real_info.height,
-//			"/sdcard/test.tga"
-//	);
+	tga_scale_draw(
+		framebuffer,
+		0, 0,
+		screen.real_info.width, screen.real_info.height,
+		"/sdcard/test.tga"
+	);
+
+	draw_fill_rect(set_pixel_alpha, framebuffer, 50, 50, 200, 100, 0x80FFFFFF);
 
 	// GRAPHICAL CODE ENDS HERE...
 
     backfb_flush(framebuffer);
+
+	while(1);
 
     backfb_deinit(framebuffer);
     _deinit_screen(screen);
