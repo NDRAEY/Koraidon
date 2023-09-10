@@ -118,7 +118,7 @@ int main(void) {
 		"/sdcard/test.tga"
 	);
 
-	draw_fill_rect(set_pixel_alpha, framebuffer, 50, 50, 200, 100, 0x80FFFFFF);
+	draw_fill_rect(set_pixel_alpha, framebuffer, 0, 0, screen.real_info.width, 100, 0x80FFFFFF);
 
 	// GRAPHICAL CODE ENDS HERE...
 
