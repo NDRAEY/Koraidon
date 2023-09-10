@@ -127,10 +127,10 @@ int main(void) {
 
     backfb_flush(framebuffer);
 
-	while(1)
+	while(1);
 
     backfb_deinit(framebuffer);
-    deinit_screen(screen);
+	deinit_screen(screen);
 
     return 0;
 }
