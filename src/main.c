@@ -119,7 +119,7 @@ int main(void) {
 		"/sdcard/test.tga"
 	);
 
-	draw_fill_rect(set_pixel_alpha, framebuffer, 0, 0, screen.real_info.width, 35, 0xACFFFFFF);
+	draw_fill_rect(set_pixel_alpha, framebuffer, 0, 0, screen.real_info.width, 36, 0xACFFFFFF);
 
 	draw_string(set_pixel_alpha, framebuffer, "Hello world!", 10, 10, 0xFF000000);
 
