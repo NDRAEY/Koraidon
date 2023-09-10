@@ -5,7 +5,7 @@
 
 typedef enum {
     SCREEN_RGB = 0,
-    SCREEN_BGR = 0,
+    SCREEN_BGR = 1,
 } koraidon_screen_pixfmt_t;
 
 typedef struct {

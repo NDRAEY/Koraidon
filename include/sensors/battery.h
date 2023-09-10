@@ -9,7 +9,7 @@ typedef enum {
 } koraidon_battery_status_t;
 
 typedef struct {
-    char* path;
+    const char* path;
 
     uint32_t level;
     float temp;

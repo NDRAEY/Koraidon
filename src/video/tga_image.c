@@ -3,6 +3,8 @@
 #include "video/tga_image.h"
 #include "video/pixel.h"
 #include "video/scaler.h"
+#include "video/blit.h"
+#include "video/pixfmt_conv.h"
 
 int tga_draw(koraidon_backfb_t framebuffer, size_t x, size_t y, const char* filename) {
 	tga_header_t* tga_header = calloc(1, sizeof(tga_header_t));
@@ -40,6 +42,7 @@ int tga_draw(koraidon_backfb_t framebuffer, size_t x, size_t y, const char* file
 	return -1;
 }
 
+// WARNING: Not a fast function.
 int tga_scale_draw(koraidon_backfb_t framebuffer, size_t x, size_t y, size_t width, size_t height, const char* filename) {
 	tga_header_t* tga_header = calloc(1, sizeof(tga_header_t));
 
@@ -71,11 +74,9 @@ int tga_scale_draw(koraidon_backfb_t framebuffer, size_t x, size_t y, size_t wid
 			(char**)&out_data
 	 	);
 
-		for(size_t sy = 0; sy < height; sy++) {
-			for(size_t sx = 0; sx < width; sx++) {
-				set_pixel(framebuffer, x + sx, y + sy, out_data[(sy * width) + sx]);
-			}
-		}
+		pixfmt_conv((char*)out_data, 32, width, height, SCREEN_RGB, framebuffer.screen.pixfmt);
+
+		buffer_blit(framebuffer, (char*)out_data, 32, x, y, width, height);
 
 		free(image_data);
 		free(out_data);

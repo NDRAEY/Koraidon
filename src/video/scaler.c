@@ -33,6 +33,7 @@ void scaler_scale(const char* input_pixels,
 			pixptr[coord_target + 1] = input_pixels[coord_source + 1];
 			pixptr[coord_target + 2] = input_pixels[coord_source + 2];
 			pixptr[coord_target + 3] = input_pixels[coord_source + 3];
+			// may be divide by 4?
 //			((uint32_t*)pixptr)[coord_target] = ((uint32_t*)input_pixels)[coord_source];
 		}
 	}

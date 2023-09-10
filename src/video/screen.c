@@ -56,6 +56,8 @@ koraidon_screen_t init_screen(const char* path) {
         screen.pixfmt = SCREEN_RGB;
     }
 
+	printf("Pixfmt: %d\n", screen.pixfmt);
+
     // Double-Flip our screen to fully initialize it.
 
     screen.real_info.sync = !screen.real_info.sync;

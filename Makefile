@@ -12,6 +12,8 @@ SRC = src/main.c \
 	  src/video/backfb.c \
 	  src/video/tga_image.c \
 	  src/video/scaler.c \
+	  src/video/blit.c \
+	  src/video/pixfmt_conv.c \
 	  src/sensors/battery.c \
 	  src/ui/psf_font.c \
 	  src/ui/rect.c \
@@ -32,7 +34,7 @@ all: $(PROJECT)
 
 $(PROJECT): $(OBJS)
 	$(CC) $(OBJS) -static -o $(PROJECT)
-	$(STRIP) -S $(PROJECT)
+	$(STRIP) -s $(PROJECT)
 	$(PY) tools/fix_tls_alignment.py $(PROJECT)
 
 $(OBJS): %.o : %.c

@@ -1,6 +1,6 @@
 # Koraidon
 
-It's my Linux custom firmware project. It uses modifed TWRP recovery for booting.
+It's my Linux custom firmware project. It uses modified TWRP recovery for booting.
 
 # How To Build
 

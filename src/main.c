@@ -112,22 +112,27 @@ int main(void) {
 
 	// IMAGES
 
-	tga_scale_draw(
-		framebuffer,
-		0, 0,
-		screen.real_info.width, screen.real_info.height,
-		"/sdcard/test.tga"
-	);
 
-	draw_fill_rect(set_pixel_alpha, framebuffer, 0, 0, screen.real_info.width, 36, 0xACFFFFFF);
+	char timebuf[32] = {0};
 
-	draw_string(set_pixel_alpha, framebuffer, "Hello world!", 10, 10, 0xFF000000);
+	while(1) {
+		time_t curtime_val = time(NULL);
+		struct tm* curtime = localtime(&curtime_val);
 
-	// GRAPHICAL CODE ENDS HERE...
+		tga_scale_draw(
+			framebuffer,
+			0, 0,
+			screen.real_info.width, screen.real_info.height,
+			"/sdcard/test.tga"
+		);
 
-    backfb_flush(framebuffer);
+		draw_fill_rect(set_pixel_alpha, framebuffer, 0, 0, screen.real_info.width, 36, 0xACFFFFFF);
 
-	while(1);
+		strftime(timebuf, 32, "[%H:%M:%S]", curtime);
+		draw_string(set_pixel_alpha, framebuffer, timebuf, 10, 10, 0xFF000000);
+
+		backfb_flush(framebuffer);
+	}
 
     backfb_deinit(framebuffer);
 	deinit_screen(screen);
