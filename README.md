@@ -35,3 +35,11 @@ Then run Koraidon, using `make run` command.
 # Supported devices
 
 + Dexp B140 (Spreadtrum)
+
+# Images
+
+![Dexp B140](https://github.com/NDRAEY/Koraidon/assets/47180136/2e1c2d14-e41e-4bba-8636-63d74b03bca1)
+
+<p align="center">
+    <i>Dexp B140</i>
+</p>
